@@ -37,3 +37,30 @@ function getLengthOfMissingArray(arrayOfArrays) {
 }
 
 // or
+
+function getLengthOfMissingArray(arrayOfArrays) {
+  if (arrayOfArrays == null || arrayOfArrays.length == 0)
+    return 0;
+  
+  let length = arrayOfArrays.length;
+  let lengths = [];
+  
+  for (let i=0; i<length; ++i) {
+    if (arrayOfArrays[i] == null || arrayOfArrays[i].length == 0)
+      return 0;
+    
+    lengths[arrayOfArrays[i].length] = true;
+  }
+  
+  let lowest = 0;
+  
+  for (let i=1, l=lengths.length; i<=l; ++i) {
+    if (!lengths[i])
+    {
+      if (lowest != 0)
+        return i;
+    }
+    else
+      lowest = i;
+  } 
+}
